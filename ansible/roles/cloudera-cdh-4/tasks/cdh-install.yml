@@ -1,0 +1,22 @@
+---
+# cloudra-cdh-4/tasks/cdh-common-install.yml
+- name: yum cache cleanup.
+  shell: yum cleanup all
+
+- name: install Mapreduce JobTracker
+  yum: name=hadoop-0.20-mapreduce-jobtracker state=present
+
+- name: install NameNode
+  yum: name=hadoop-hdfs-namenode state=present
+
+# - name: install Secondary NameNode
+#   yum: name=hadoop-hdfs-secondarynamenode state=present
+
+- name: install TaskTracker and DataNode
+  yum: name={{ item }} state=present
+  with_items:
+    - hadoop-0.20-mapreduce-tasktracker
+    - hadoop-hdfs-datanode
+
+- name: install hadoop client
+  yum: name=hadoop-client state=present

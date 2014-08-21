@@ -1,0 +1,18 @@
+- name: groups create
+  group: >
+    name={{ item.group }}
+    state=present
+  witsh_items: addusers
+- name: users create
+  user: >
+    name={{ item.username }}
+    password={{ item.password }}
+    state=present
+    name={{ item.username }}
+    password={{ item.password }}
+    group={{ item.group }}
+    shell={{ item.shell }}
+    home={{ item.home }}
+    createhome=yes
+    state=present
+  witsh_items: addusers

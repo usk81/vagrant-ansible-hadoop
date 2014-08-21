@@ -1,0 +1,11 @@
+---
+# file: site.xml
+- hosts: all
+  sudo: True
+  roles:
+    - common
+    - python
+
+#- include: servers/webservers.xml
+#- include: servers/elasticsearchs.xml
+#- include: servers/hadoops.xml

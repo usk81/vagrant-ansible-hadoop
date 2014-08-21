@@ -1,0 +1,14 @@
+# How do I generate crypted passwords for the user module?
+#   $ python -c 'import crypt; print crypt.crypt("ballantines", "$1$blender$")'
+#   $ perl -MCrypt::Passwd::XS -lE 'print +Crypt::Passwd::XS::crypt( shift, q|$6$|.int(rand(2**32)))' ballantines
+#   $ $1$blender$vAYJNdsTY1ng8Yig4btyc1
+#
+# See also
+#   http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
+addusers:
+  - username: deploy
+    password: $1$blender$vAYJNdsTY1ng8Yig4btyc1
+    shell: /bin/bash
+    group: deploy
+    groups: wheel
+    home: /home/deploy

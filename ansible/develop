@@ -1,0 +1,23 @@
+[hadoop-servers]
+127.0.0.1 ansible_connection=local
+
+[elasticsearch-servers]
+127.0.0.1 ansible_connection=local
+
+[database-servers]
+127.0.0.1 ansible_connection=local
+
+[web-servers]
+127.0.0.1 ansible_connection=local
+
+[hadoop:children]
+hadoop-servers
+
+[elasticsearch:children]
+elasticsearch-servers
+
+[webserver:children]
+web-servers
+
+[database:children]
+database-servers
