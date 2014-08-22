@@ -12,3 +12,7 @@ addusers:
     group: deploy
     groups: wheel
     home: /home/deploy
+
+python_version:
+  detail: 2.7.8
+  simplified: 2.7

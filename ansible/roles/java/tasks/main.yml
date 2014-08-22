@@ -1,0 +1,11 @@
+---
+- name: download java sdk.
+  get_url: url= dest=/tmp
+
+- name: rename rpm file. (ignore failed)
+  shell: mv /tmp/{{ jdk.pkg }}* /tmp/{{ jdk.pkg }}
+  register: result
+  failed_when: result.rc not in [0, 1]
+
+- name: install JAVA SDK
+  yum: name=/tmp/{{ jdk.pkg }} state=present

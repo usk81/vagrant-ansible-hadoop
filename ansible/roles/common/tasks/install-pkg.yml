@@ -26,6 +26,13 @@
     - zlib
     - zlib-devel
 
+- name: 'install-pkg | RedHat | Each package for Python should be installed'
+  when: ansible_os_family == "RedHat"
+  yum:  name={{ item }} state=present
+  with_items:
+    - python-simplejson
+    - libselinux-python
+
 - name: 'install-pkg | Each tool should be installed'
   yum:  name={{ item }} state=present
   with_items:

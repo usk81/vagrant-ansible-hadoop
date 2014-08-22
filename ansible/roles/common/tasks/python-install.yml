@@ -2,13 +2,13 @@
   - name: install Development Tools
     yum: name="@Development tools" state=present
   - name: download python tarball file
-    get_url: url=https://www.python.org/ftp/python/{{ version.ditail }}/Python-{{ version.ditail }}.tgz dest=/tmp
+    get_url: url=https://www.python.org/ftp/python/{{ python_version.ditail }}/Python-{{ python_version.ditail }}.tgz dest=/tmp
   - name: change directory /tmp
     shell: cd /tmp
   - name: extract python tarball file
-    shell: tar zxf Python-{{ version.ditail }}.tgz
+    shell: tar zxf Python-{{ python_version.ditail }}.tgz
   - name: cd Python directory
-    shell: cd Python-{{ version.ditail }}
+    shell: cd Python-{{ python_version.ditail }}
   - name: set install directory
     shell: './configure --prefix=/opt/local'
   - name: python install
@@ -16,8 +16,8 @@
   - name: download distribute_setup
     get_url: url=http://python-distribute.org/distribute_setup.py dist=/tmp
   - name: install Easy_install and pip commands
-    shell: /opt/local/bin/python{{ version.simplified }} ./distribute_setup.py
+    shell: /opt/local/bin/python{{ python_version.simplified }} ./distribute_setup.py
   - name: install VirtualEnv and set python version
-    shell: /opt/local/bin/easy_install-{{ version.simplified }} virtualenv
+    shell: /opt/local/bin/easy_install-{{ python_version.simplified }} virtualenv
   - name: libselinux-python
     yum: name=libselinux-python state=present

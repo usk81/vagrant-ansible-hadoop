@@ -1,0 +1,5 @@
+---
+# roles/java/vars/main.yml
+jdk:
+  url: http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.rpm
+  pkg: jdk-8u20-linux-x64.rpm

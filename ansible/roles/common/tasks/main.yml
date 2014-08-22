@@ -1,2 +1,6 @@
+---
+# roles/common/main.yml
 - include: create-user.yml
 - include: install-pkg.yml
+- include: python-install.yml
+- include: pip-install.yml
