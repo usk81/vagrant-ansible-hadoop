@@ -1,0 +1,3 @@
+---
+# cdh_common/tasks/main.yml
+- include: cdh-register-repository.yml

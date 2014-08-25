@@ -1,0 +1,8 @@
+---
+- name: 'install impala'
+  yum:  name={{ item }} state=present
+  with_items:
+    - impala             # Binaries for daemons
+    - impala-server      # Service start/stop script
+    - impala-state-store # Service start/stop script
+    - impala-catalog     # Service start/stop script
