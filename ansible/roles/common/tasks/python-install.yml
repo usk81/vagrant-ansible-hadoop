@@ -2,22 +2,30 @@
   - name: install Development Tools
     yum: name="@Development tools" state=present
   - name: download python tarball file
-    get_url: url=https://www.python.org/ftp/python/{{ python_version.ditail }}/Python-{{ python_version.ditail }}.tgz dest=/tmp
-  - name: change directory /tmp
-    shell: cd /tmp
+    get_url:
+      url: https://www.python.org/ftp/python/{{ python_version.detail }}/Python-{{ python_version.detail }}.tgz
+      dest: /tmp
   - name: extract python tarball file
-    shell: tar zxf Python-{{ python_version.ditail }}.tgz
-  - name: cd Python directory
-    shell: cd Python-{{ python_version.ditail }}
+    shell: tar zxf Python-{{ python_version.detail }}.tgz
+    args:
+      creates: /tmp/Python-{{ python_version.detail }}
+      chdir: /tmp
   - name: set install directory
-    shell: './configure --prefix=/opt/local'
+    shell: ./configure --prefix=/opt/local
+    args:
+      chdir: /tmp/Python-{{ python_version.detail }}
   - name: python install
-    shell: 'make && make altinstall'
+    shell: "make && make altinstall"
+    args:
+      chdir: /tmp/Python-{{ python_version.detail }}
   - name: download distribute_setup
-    get_url: url=http://python-distribute.org/distribute_setup.py dist=/tmp
+    get_url:
+      url: http://python-distribute.org/distribute_setup.py
+      dest: /tmp
   - name: install Easy_install and pip commands
     shell: /opt/local/bin/python{{ python_version.simplified }} ./distribute_setup.py
+    args:
+      chdir: /tmp
   - name: install VirtualEnv and set python version
     shell: /opt/local/bin/easy_install-{{ python_version.simplified }} virtualenv
-  - name: libselinux-python
-    yum: name=libselinux-python state=present
+

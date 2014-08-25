@@ -1,4 +1,0 @@
----
-# cloudra-cdh-4/tasks/main.yml
-- include: cdh-register-repository.yml
-- include: cdh-install.yml

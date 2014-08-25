@@ -1,7 +1,0 @@
----
-- name: install from pip packages.
-  shell: pip install {{ item }}
-  with_items:
-    - jinja2
-    - paramiko
-    - PyYAML

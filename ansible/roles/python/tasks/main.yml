@@ -1,4 +1,0 @@
----
-# python/tasks/main.yml
-- include: python-install.yml
-- include: pip-install.yml

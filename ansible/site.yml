@@ -4,7 +4,12 @@
   sudo: True
   roles:
     - common
-    - python
+    - java
+    - cdh_common
+    - cdh_hadoop
+    - cdh_hive_common
+    - cdh_impala_common
+
 
 #- include: servers/webservers.xml
 #- include: servers/elasticsearchs.xml

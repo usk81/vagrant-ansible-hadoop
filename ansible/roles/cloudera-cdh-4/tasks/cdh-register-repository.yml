@@ -1,8 +1,0 @@
----
-# cloudra-cdh-4/tasks/cdh-register-repository.yml
-- name: get CDH repository package
-  get_url: url=http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/cloudera-cdh4.repo dest=/etc/yum.repos.d/
-- name: Add CDH repository package
-  shell: yum upodate yum
-- name: Add a Repository Key(optionally)
-  shell: rpm --import http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/RPM-GPG-KEY-cloudera

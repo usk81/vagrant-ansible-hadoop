@@ -2,7 +2,7 @@
   group: >
     name={{ item.group }}
     state=present
-  witsh_items: addusers
+  with_items: addusers
 - name: users create
   user: >
     name={{ item.username }}
@@ -15,4 +15,4 @@
     home={{ item.home }}
     createhome=yes
     state=present
-  witsh_items: addusers
+  with_items: addusers
