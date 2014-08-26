@@ -1,5 +1,10 @@
 ---
-- name: 'install impala'
+- name: get impala repository package
+  get_url:
+    url: http://archive.cloudera.com/impala/redhat/6/x86_64/impala/cloudera-impala.repo
+    dest: /etc/yum.repos.d/
+
+- name: install impala
   yum:  name={{ item }} state=present
   with_items:
     - impala             # Binaries for daemons
