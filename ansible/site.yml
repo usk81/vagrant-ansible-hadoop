@@ -9,6 +9,7 @@
     - cdh_hadoop
     - cdh_hive_common
     - cdh_impala_common
+    - peco
 
 
 #- include: servers/webservers.xml

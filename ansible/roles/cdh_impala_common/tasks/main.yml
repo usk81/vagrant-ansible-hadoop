@@ -5,9 +5,25 @@
     dest: /etc/yum.repos.d/
 
 - name: install impala
-  yum:  name={{ item }} state=present
+  yum: name={{ item }} state=present
   with_items:
     - impala             # Binaries for daemons
     - impala-server      # Service start/stop script
     - impala-state-store # Service start/stop script
     - impala-catalog     # Service start/stop script
+    - impala-shell
+
+- name: create symbolic link from hadoop's core-site.xml to impala configration directory
+  shell: ln -s /etc/hadoop/conf/core-site.xml /etc/impala/conf/
+  args:
+    creates: /etc/impala/conf/core-site.xml
+
+- name: create symbolic link from hadoop's hdfs-site.xml to impala configration directory
+  shell: ln -s /etc/hadoop/conf/hdfs-site.xml /etc/impala/conf/
+  args:
+    creates: /etc/impala/conf/hdfs-site.xml
+
+- name: create symbolic link from hive's hive-site.xml to impala configration directory
+  shell: ln -s /etc/hive/conf/hive-site.xml /etc/impala/conf/
+  args:
+    creates: /etc/impala/conf/hive-site.xml

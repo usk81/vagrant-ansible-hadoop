@@ -1,6 +1,11 @@
 ---
 - name: download peco tarball.
-  get_url: https://github.com/peco/peco/releases/download/v{{ version }}/peco_linux_amd64.tar.gz dest=/usr/local
+  get_url:
+    url: https://github.com/peco/peco/releases/download/v{{ version }}/peco_linux_amd64.tar.gz
+    dest: /tmp
 
 - name: extra tarball
-  shell: tar -zxf /usr/local/peco_linux_amd64.tar.gz
+  shell: tar zxf peco_linux_amd64.tar.gz -C /usr/local/bin/ --strip=1 '*/peco' --no-same-owner --no-same-permissions
+  args:
+    chdir: /tmp
+    creates: /usr/local/bin/peco

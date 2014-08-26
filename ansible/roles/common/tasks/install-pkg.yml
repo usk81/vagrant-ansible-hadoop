@@ -32,6 +32,9 @@
   with_items:
     - python-simplejson
     - libselinux-python
+    - python-devel
+    - openssl-devel
+    - python-pip
 
 - name: 'install-pkg | Each tool should be installed'
   yum:  name={{ item }} state=present
@@ -39,3 +42,6 @@
     - wget
     - telnet
     - finger
+
+- name: install python ssl package
+  shell: pip-python install ssl
