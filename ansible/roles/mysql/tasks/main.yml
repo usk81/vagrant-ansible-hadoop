@@ -1,0 +1,14 @@
+---
+#
+- name: add mysql's repository
+  yum:
+    name: "{{ mysql.repository }}"
+    state: present
+
+- name: install mysql packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-community-server
+    - mysql-community-devel.x86_64
