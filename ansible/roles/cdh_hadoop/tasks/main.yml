@@ -1,19 +1,42 @@
 ---
 # cdh_hadoop/tasks/main.yml
-- name: install Mapreduce JobTracker
-  yum: name=hadoop-0.20-mapreduce-jobtracker state=present
+# - name: install Mapreduce JobTracker
+#   yum: name=hadoop-0.20-mapreduce-jobtracker state=present
 
-- name: install NameNode
-  yum: name=hadoop-hdfs-namenode state=present
+# - name: install NameNode
+#   yum: name=hadoop-hdfs-namenode state=present
 
 # - name: install Secondary NameNode
-#   yum: name=hadoop-hdfs-secondarynamenode state=present
+#   # yum: name=hadoop-hdfs-secondarynamenode state=present
 
-- name: install TaskTracker and DataNode
-  yum: name={{ item }} state=present
-  with_items:
-    - hadoop-0.20-mapreduce-tasktracker
-    - hadoop-hdfs-datanode
+# - name: install TaskTracker and DataNode
+#   yum: name={{ item }} state=present
+#   with_items:
+#     - hadoop-0.20-mapreduce-tasktracker
+#     - hadoop-hdfs-datanode
 
-- name: install hadoop client
-  yum: name=hadoop-client state=present
+# - name: install hadoop client
+#   yum: name=hadoop-client state=present
+
+- name: install Hadoop with pseudo distribute configuration
+  yum:
+    name: hadoop-0.20-conf-pseudo
+    state: present
+
+# sudo -u hdfs hdfs namenode -format
+# for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; do sudo service $x start ; done
+# sudo -u hdfs hadoop fs -mkdir -p /var/lib/hadoop-hdfs/cache/mapred/mapred/staging
+# sudo -u hdfs hadoop fs -chmod 1777 /var/lib/hadoop-hdfs/cache/mapred/mapred/staging
+# sudo -u hdfs hadoop fs -chown -R mapred /var/lib/hadoop-hdfs/cache/mapred
+# sudo -u hdfs hadoop fs -ls -R /
+# sudo -u hdfs hadoop fs -mkdir -p /user/<user>
+# sudo -u hdfs hadoop fs -chown <user> /user/<user>
+# sudo -u hdfs hadoop fs -mkdir -p /user/joe
+# sudo -u hdfs hadoop fs -chown joe /user/joe
+# hadoop fs -mkdir input
+# hadoop fs -put /etc/hadoop/conf/*.xml input
+# hadoop fs -ls input
+# /usr/bin/hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar grep input output 'dfs[a-z.]+'
+# hadoop fs -ls
+# hadoop fs -ls output
+# hadoop fs -cat output/part-00000 | head

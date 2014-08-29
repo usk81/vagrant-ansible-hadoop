@@ -42,6 +42,3 @@
     - wget
     - telnet
     - finger
-
-- name: install python ssl package
-  shell: pip-python install ssl
