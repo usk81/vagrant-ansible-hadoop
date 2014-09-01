@@ -1,0 +1,12 @@
+---
+#
+- name: install PostgreSQL
+  yum:
+    name: postgresql-server
+    state: present
+
+- name: initialize PostgreSQL database
+  shell: service postgresql initdb
+
+# sudo service postgresql start
+# sudo chkconfig postgresql on
