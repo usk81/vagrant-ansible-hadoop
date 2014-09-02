@@ -39,4 +39,8 @@
 # /usr/bin/hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar grep input output 'dfs[a-z.]+'
 # hadoop fs -ls
 # hadoop fs -ls output
-# hadoop fs -cat output/part-00000 | head
+# hadoop fs -cat output/part-00000 | headgr
+
+
+# sudo yum install http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+# sudo yum install

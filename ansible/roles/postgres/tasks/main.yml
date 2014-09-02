@@ -1,12 +1,33 @@
 ---
 #
-- name: install PostgreSQL
+- name: add PostgreSQL package
   yum:
-    name: postgresql-server
+    name: http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-redhat93-9.3-1.noarch.rpm
     state: present
 
-- name: initialize PostgreSQL database
-  shell: service postgresql initdb
+- name: install PostgreSQL
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - postgresql93-server
+    - postgresql93-contrib
+    - postgresql93-devel
+    - postgresql93-plpython
+
+# - name: initialize PostgreSQL database
+#   shell: service postgresql initdb
+
+# - name: start postgres deamon
+#   shell: service postgresql-9.3 start
+
+# - name: set auto run (postgreSQL)
+#   shell:　chkconfig postgresql-9.3 on
+
 
 # sudo service postgresql start
 # sudo chkconfig postgresql on
+
+
+# sudo yum install postgresql-jdbc
+# sudo ln -s /usr/share/java/postgresql-jdbc.jar /usr/lib/hive/lib/postgresql-jdbc.jar

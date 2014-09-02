@@ -7,9 +7,6 @@
   user: >
     name={{ item.username }}
     password={{ item.password }}
-    state=present
-    name={{ item.username }}
-    password={{ item.password }}
     group={{ item.group }}
     shell={{ item.shell }}
     home={{ item.home }}
