@@ -6,8 +6,8 @@
     - common
     - java
     # - mysql
-    # - cdh_common
-    # - cdh_hadoop
+    - cdh_common
+    - cdh_hadoop
     # - cdh_hive_common
     # - cdh_impala_common
     - postgres
