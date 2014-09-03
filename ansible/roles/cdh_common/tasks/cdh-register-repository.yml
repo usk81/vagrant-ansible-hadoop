@@ -5,6 +5,6 @@
 - name: Add CDH repository package
   shell: yum update yum
 - name: Add a Repository Key(optionally)
-  shell: rpm --import http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/RPM-GPG-KEY-cloudera
+  shell: rpm --import http://archive.cloudera.com/cdh5/redhat/6/x86_64/cdh/RPM-GPG-KEY-cloudera
 - name: yum cache cleanup.
   shell: yum clean all
